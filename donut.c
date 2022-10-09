@@ -478,32 +478,33 @@ static int read_file_info(PDONUT_CONFIG c) {
       return DONUT_ERROR_FILE_INVALID;
     }
     DPRINT("Extension is \"%s\"", ext);
-
+    
     // VBScript?
-    if (strcasecmp(ext, ".vbs") == 0) {
-      DPRINT("File is VBS");
+    if (strcasecmp(ext, ".vbs")) {
+      DPRINT("File is VBS. Because \"%s\" == \"%s\"", ext, ".vbs");
       fi.type = DONUT_MODULE_VBS;
       fi.arch = DONUT_ARCH_ANY;
     } else 
     // JScript?
-    if (strcasecmp(ext,  ".js") == 0) {
+    if (strcasecmp(ext,  ".js")) {
       DPRINT("File is JS");
       fi.type = DONUT_MODULE_JS;
       fi.arch = DONUT_ARCH_ANY;
-    } else 
-    // EXE?
-    if (strcasecmp(ext, ".exe") == 0) {
-      DPRINT("File is EXE");
+    } else // EXE?
+    if (strcasecmp(ext, ".exe")) {
+      DPRINT("File is EXE. Because \"%s\" == \"%s\"", ext, ".exe");
       fi.type = DONUT_MODULE_EXE;
     } else
     // DLL?
-    if (strcasecmp(ext, ".dll") == 0) {
-      DPRINT("File is DLL");
+    if (strcasecmp(ext, ".dll")) {
+      DPRINT("File is DLL. Because \"%s\" == \"%s\"", ext, ".dll");
       fi.type = DONUT_MODULE_DLL;
-    } else {
+    } else 
+    {
       DPRINT("Don't recognize file extension.");
       return DONUT_ERROR_FILE_INVALID;
     }
+
     
     DPRINT("Mapping %s into memory", c->input);
     
