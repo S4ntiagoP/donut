@@ -101,10 +101,8 @@ int _strcmp(const char *str1, const char *str2) {
 
 int stricmp(const char *str1, const char *str2) {
     while (*str1 && *str2) {
-      if ((*str1 | 0x20) != (*str2 | 0x20)) {
-        return 0;
-      }
+      if ((*str1 | 0x20) != (*str2 | 0x20)) break;
       str1++; str2++;
     }
-    return *str2 == 0;
+    return (int)*str1 - (int)*str2;
 }
